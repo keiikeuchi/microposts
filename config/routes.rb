@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'users/:id/edit', to: 'users#edit'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :microposts
 end
