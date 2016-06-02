@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
  
-  # before_actionを書く順序が大切です。set_userしてからでないと
-  # set_loginメソッド内で@userが空になってしまいます。
+  
   before_action :set_user, only: [:show, :edit, :update]
-  # ↑showアクションも同じコードがあるので追加しました。
+ 
   before_action :set_login, only: [:edit, :update]
   
-  
+  def followings
+   @user = User.find(params[:id])
+   @followings = @user.following_users
+  end
+ 
+  def followers
+   @user = User.find(params[:id])
+   @followers = @user.follower_users
+  end
+ 
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)

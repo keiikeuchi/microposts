@@ -1,0 +1,4 @@
+<% @followings.each do |user| %>
+  <%= gravatar_for user %>
+  <%= link_to user.name, user %>
+<% end %>
