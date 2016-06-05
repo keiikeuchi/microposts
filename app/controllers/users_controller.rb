@@ -5,6 +5,10 @@ class UsersController < ApplicationController
  
   before_action :set_login, only: [:edit, :update]
   
+  def index
+    @users = User.all
+  end
+  
   def followings
    @user = User.find(params[:id])
    @followings = @user.following_users
